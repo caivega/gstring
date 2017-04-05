@@ -45,11 +45,10 @@ func gformat(format string, args map[string]interface{}) (string, []interface{})
 			in_format = true
 		case '}':
 			if !in_format {
-				if previousChar == '}' {
+				if previousChar != '{' {
 					new_format = append(new_format, ch)
 					break
 				}
-				// what to do if not in_format and only single } appears?
 				break
 			}
 			if in_format {
